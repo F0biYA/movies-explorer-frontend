@@ -57,10 +57,6 @@
 
 }
 
-.form__input:focus {
-  outline: none;
-}
-
 .register__header {
   padding-top: 70px;
   display: flex;

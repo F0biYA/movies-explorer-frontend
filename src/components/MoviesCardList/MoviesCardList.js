@@ -4,7 +4,6 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import moviesArray from "../../utils/moviesArray";
 
 function MoviesCardList() {
-
   function getMovies(movies) {
     return movies.map((movie) => {
       return <MoviesCard

@@ -18,7 +18,7 @@ function SavedMovies() {
       <SearchForm />
       <MoviesCardList />
       {/*<Preloader />*/}
-      <ButtonMoreMovie />
+      <ButtonMoreMovie hide />
       <Footer />
     </section>
   )

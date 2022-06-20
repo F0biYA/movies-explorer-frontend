@@ -53,11 +53,9 @@
   line-height: 13px;
   letter-spacing: 0px;
   text-align: right;
+  width: calc(100% - 40px);
 }
 
-.profile__form__input:focus {
-  outline: none;
-}
 
 .profile__form__submit-container {
   display: flex;

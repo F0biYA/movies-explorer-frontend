@@ -1,10 +1,10 @@
 .aboutMe {
   background: #FFF;
-  width: 100%;
+  width: calc(100% - 140px);
   max-width: 1140px;
   min-width: 292px;
   margin: 0 auto 0 auto;
-  padding: 110px 0 100px 0;
+  padding: 110px 70px 100px 70px;
 }
 
 .aboutMe__profile {
@@ -76,8 +76,8 @@
 
 @media screen and (max-width: 768px) {
   .aboutMe {
-    max-width: 668px;
-    padding: 88px 0 90px 0;
+    width: calc(100% - 100px);
+    padding: 88px 50px 90px 50px;
   }
   .aboutMe__profile__image {
     width: 255px;
@@ -103,8 +103,8 @@
 }
 @media screen and (max-width: 580px) {
   .aboutMe {
-    max-width: 292px;
-    padding: 70px 0 70px;
+    width: calc(100% - 28px);
+    padding: 70px 14px ;
   }
   .aboutMe__profile {
     flex-direction: column;

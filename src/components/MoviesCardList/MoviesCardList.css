@@ -1,6 +1,6 @@
 .moviesCardList {
-  max-width: 1140px;
-  padding: 70px 0 10px 0;
+  width: 100%;
+  padding: 70px 0 107px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, 364px);
@@ -11,16 +11,20 @@
 
 @media screen and (max-width:768px) {
   .moviesCardList {
-    max-width: 708px;
+    width: 100%;
     gap: 30px;
     grid-template-columns: repeat(auto-fit, 339px);
+    padding-bottom: 26px;
   }
 }
+
 @media screen and (max-width:580px) {
   .moviesCardList {
-    max-width: 300px;
+    width: calc(100% - 20px);
     gap: 14px;
     grid-template-columns: repeat(1, 300px);
     padding-top: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }

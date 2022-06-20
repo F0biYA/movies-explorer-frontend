@@ -6,8 +6,8 @@ function SearchForm() {
     <section className="searchForm">
       <form className="searchForm__form">
         <fieldset className="searchForm__form__input-container ">
-          <input type="text" name="text" className="searchName__form__input" placeholder="Фильм"></input>
-          <button type="submit" className="searchForm__form__search-button"></button>
+          <input type="text" name="text" className="searchName__form__input" placeholder="Фильм" required></input>
+          <button type="submit" className="searchForm__form__search-button hover"></button>
         </fieldset>
 
         <fieldset className="searchName__form__filter-container">

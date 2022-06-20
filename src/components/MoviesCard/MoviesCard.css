@@ -51,7 +51,20 @@
   background-color: transparent;
   padding: 0;
 }
+.movieCard__button-heart_active {
+  background-image: url(../../images/heart_active.svg);
+}
 
+.movieCard__button-delete {
+  width: 30px;
+  border: none;
+  height: 30px;
+  background-image: url(../../images/delete.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  padding: 0;
+}
 .movieCard__duration {
   font-size: 11px;
   font-weight: 400;
