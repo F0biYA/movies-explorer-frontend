@@ -1,0 +1,137 @@
+.aboutProject {
+  background: #FFFFFF;
+  width: calc(100% - 140px);
+  max-width: 1140px;
+  min-width: 292px;
+  margin: 0 auto 0 auto;
+  padding: 110px 70px 110px 70px;
+}
+
+.aboutProject__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 10px;
+  column-gap: 40px;
+  margin: 0;
+  padding: 70px 0 110px 0;
+}
+
+.aboutProject__container-title {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  text-align: left;
+}
+
+.aboutProject__container-subtitle {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.aboutProject__timeLine {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto auto;
+  row-gap: 14px;
+  align-items: center;
+}
+
+.aboutProject__timeLine__Element {
+  height: 36px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F2F2F2;
+}
+
+.aboutProject__timeLine__Element:nth-of-type(1) {
+  background-color: #2BE080;
+}
+
+.aboutProject__timeLine__title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #A0A0A0;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width:768px) {
+  .aboutProject {
+    width: calc(100% - 100px);
+    padding: 90px 50px;
+  }
+
+  .aboutProject__container {
+    row-gap: 18px;
+    column-gap: 40px;
+    padding-bottom: 93px;
+  }
+
+  .aboutProject__container-subtitle {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .aboutProject__timeLine__title {
+    font-weight: 400;
+  }
+}
+
+@media screen and (max-width:580px) {
+  .aboutProject {
+    width: calc(100% - 36px);
+    padding: 70px 18px;
+  }
+  .aboutProject__container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .aboutProject__container-title {
+    font-size: 18px;
+    line-height: 21.78px;
+  }
+  .aboutProject__container-title:last-of-type {
+    order: 2;
+    padding-top: 40px;
+  }
+  .aboutProject__container-subtitle {
+    font-size: 11px;
+    line-height: 16px;
+  }
+  .aboutProject__container-subtitle:last-of-type {
+    order: 2;
+  }
+  .aboutProject__timeLine {
+    grid-template-columns: 100px 184px;
+    gap: 10px
+  }
+  .aboutProject__timeLine__title {
+    font-size: 11px;
+    line-height: 12.74px;
+  }
+  .aboutProject__timeLine__Element {
+    font-size: 11px;
+    line-height: 13.31px;
+  }
+}
