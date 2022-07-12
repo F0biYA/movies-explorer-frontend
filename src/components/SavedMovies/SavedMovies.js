@@ -4,10 +4,10 @@ import Header from "../Header/Header";
 import NavigationBar from "../NavigationBar/NavigationBar";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import ButtonMoreMovie from "../ButtonMoreMovie/ButtonMoreMovie";
 import Footer from "../Footer/Footer";
+import Preloader from "../Preloader/Preloader";
 
-function SavedMovies() {
+function SavedMovies(props) {
 
   return (
     <section className="savedMovies">
@@ -15,10 +15,9 @@ function SavedMovies() {
         children={
           <NavigationBar />
         } />
-      <SearchForm />
-      <MoviesCardList />
-      {/*<Preloader />*/}
-      <ButtonMoreMovie hide />
+     <SearchForm handleShortFilms={props.handleShortFilms} shortMovies={props.shortMovies} filter={props.filter}/>
+      <MoviesCardList deleteMovie={props.deleteMovie} data={props.movies} hide={true} />
+      {props.isPreloader ? <Preloader /> : ''}
       <Footer />
     </section>
   )

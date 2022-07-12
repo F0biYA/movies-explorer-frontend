@@ -8,7 +8,13 @@
   row-gap: 37px;
   justify-content: center;
 }
-
+.moviesCardList__message {
+  font-size: 36px;
+  color: #FF6838;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+}
 @media screen and (max-width:768px) {
   .moviesCardList {
     width: 100%;
