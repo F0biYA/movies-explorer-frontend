@@ -65,7 +65,8 @@ function App() {
         .finally(() => setIsPreloader(false))
       api.getSavedMovies()
         .then((data) => {
-          setSavedMovies(data);
+          const userSavedList = data.filter(m => m.owner === currentUser._id);
+          setSavedMovies(userSavedList);
           setIsPreloader(true)
        //   localStorage.setItem('movies-short', shortMovies)
         })
@@ -117,6 +118,7 @@ function App() {
           localStorage.setItem('jwt', data.token);
           setLoggedIn(true);
           navigate('/movies');
+          window.location.reload ()
         }
       })
       .catch((err) => {
@@ -168,11 +170,16 @@ function App() {
   }
 
   function signOut() {
+    //setLoggedIn(false);
     localStorage.clear();
-    setAllMovies('');
-    setFilteredMovies('');
+    //setAllMovies([]);
+   // setFilteredMovies([]);
+   // setSavedMovies([]);
+
     navigate('/signin');
-    setLoggedIn(false);
+    //window.location.reload ()
+
+   //setCurrentUser({})
   }
 
   return (

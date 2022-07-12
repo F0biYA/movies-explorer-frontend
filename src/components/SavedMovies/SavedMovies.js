@@ -8,7 +8,7 @@ import Footer from "../Footer/Footer";
 import Preloader from "../Preloader/Preloader";
 
 function SavedMovies(props) {
-
+console.log(props)
   return (
     <section className="savedMovies">
       <Header
