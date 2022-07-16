@@ -5,7 +5,6 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import ButtonMoreMovie from "../ButtonMoreMovie/ButtonMoreMovie";
 
 function MoviesCardList(props) {
-
   const location = useLocation();
   let saved = false;
 
@@ -78,12 +77,14 @@ function MoviesCardList(props) {
 
 }
 }
-return (<p className="moviesCardList__message">Ничего не найдено</p>)
+//return (<p className="moviesCardList__message">Ничего не найдено</p>)
   }
 return (
   <>
     <section className="moviesCardList">
       {getMovies(props.data, props.savedMovies)}
+      {location.pathname === '/movies' && localStorage.getItem('search-value') && props.data.length === 0 ?  <p className="moviesCardList__message">Ничего не найдено</p> : ''}
+      {location.pathname === '/saved-movies'  && props.data.length === 0 ?  <p className="moviesCardList__message">Ничего не найдено</p> : ''}
     </section>
     { } <ButtonMoreMovie freeCell={freeCell} hide={props.hide ? true : false} loadMore={loadMore} />
   </>

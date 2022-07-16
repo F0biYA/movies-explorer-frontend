@@ -25,7 +25,8 @@ function App() {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [shortMovies, setShortMovies] = useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
-
+  const [filteredSavedMovies, setFilteredSavedMovies] = useState([])
+  const [shortSavedMovies, setShortSavedMovies] = useState(false);
 
   function filterMovie(searchValue) {
     const tempMovies = searchMovies(allMovies, searchValue);
@@ -68,7 +69,7 @@ function App() {
           const userSavedList = data.filter(m => m.owner === currentUser._id);
           setSavedMovies(userSavedList);
           setIsPreloader(true)
-       //   localStorage.setItem('movies-short', shortMovies)
+          //   localStorage.setItem('movies-short', shortMovies)
         })
         .catch((err) => {
           console.log(`Невозможно отобразить сохранненые фильмы с сервера ${err}`)
@@ -82,6 +83,11 @@ function App() {
     localStorage.setItem('movies-short', !shortMovies);
     filterMovie(localStorage.getItem('search-value'));
   }
+  function handleShortSavedFilms() {
+    setShortSavedMovies(!shortSavedMovies);
+    localStorage.setItem('saved-movies-short', !shortSavedMovies);
+    filterSavedMovies('');
+  }
 
   /*получаю информацию о профиле с сервера*/
   useEffect(() => {
@@ -91,7 +97,7 @@ function App() {
           setCurrentUser(userInfoObject)
           setLoggedIn(true);
           localStorage.setItem('user', userInfoObject.email);
-          navigate('/movies')
+          // navigate('/movies')
         })
         .catch((err) => {
           console.log(`Невозможно получить информацию о пользователе ${err}`);
@@ -117,8 +123,9 @@ function App() {
         if (data.token) {
           localStorage.setItem('jwt', data.token);
           setLoggedIn(true);
+          localStorage.setItem('login', true);
           navigate('/movies');
-          window.location.reload ()
+          window.location.reload()
         }
       })
       .catch((err) => {
@@ -141,7 +148,7 @@ function App() {
     api
       .postMovie(movie)
       .then((data) => setSavedMovies([data, ...savedMovies]))
-     //.then((data) => console.log(data))
+      //.then((data) => console.log(data))
       .catch((err) => {
         console.log(`Невозможно загрузить данные на сервер ${err}`);
       })
@@ -168,18 +175,29 @@ function App() {
         console.log(`Невозможно удалить фильм: ${err}`);
       })
   }
+  function filterSavedMovies(searchValue) {
+    const tempSavedMovies = searchSavedMovies(savedMovies, searchValue)
+    localStorage.setItem('search-saved-movies', JSON.stringify(tempSavedMovies));
+    return setFilteredSavedMovies(tempSavedMovies)
+  }
+  function searchSavedMovies(movies, value) {
+    if ((localStorage.getItem('saved-movies-short') === 'true')) {
+      const tempShortSavedMovies = movies.filter((m) => { return m.duration < 40 })
+      return tempShortSavedMovies.filter((m) => {
+        return m.nameRU.toLowerCase().includes(value.toLowerCase())
+      });
+    }
+    else {
+      return movies.filter((m) => {
+        return m.nameRU.toLowerCase().includes(value.toLowerCase())
+      });
+    }
+  }
 
   function signOut() {
-    //setLoggedIn(false);
     localStorage.clear();
-    //setAllMovies([]);
-   // setFilteredMovies([]);
-   // setSavedMovies([]);
-
-    navigate('/signin');
-    //window.location.reload ()
-
-   //setCurrentUser({})
+    navigate('/');
+    window.location.reload()
   }
 
   return (
@@ -201,7 +219,7 @@ function App() {
                 deleteMovie={handleDeleteMovie}
                 movies={filteredMovies}
                 savedMovies={savedMovies}
-                handleShortFilms={handleShortFilms} shortMovies={shortMovies} filter={filterMovie}
+                handleShortFilms={handleShortFilms} shortMovies={shortMovies} filter={filterMovie} filterSavedMovies={filterSavedMovies}
                 isPreloader={isPreloader} />
             </ProtectedRoute>
           }
@@ -212,9 +230,14 @@ function App() {
             <ProtectedRoute loggedIn={loggedIn}>
               <SavedMovies
                 isPreloader={isPreloader}
-                movies={savedMovies}
+                movies={localStorage.getItem('search-value-saved') ? filteredSavedMovies : savedMovies}
+                // filteredSavedMovies={filteredSavedMovies}
                 deleteMovie={handleDeleteMovie}
-                handleShortFilms={handleShortFilms} shortMovies={shortMovies} filter={filterMovie} />
+                handleShortFilms={handleShortSavedFilms}
+                shortMovies={localStorage.getItem('saved-movies-short') ? JSON.parse(localStorage.getItem('saved-movies-short')): shortSavedMovies}
+                // shortMovies={JSON.parse(localStorage.getItem('saved-movies-short'))}
+                filter={filterMovie}
+                filterSavedMovies={filterSavedMovies} />
             </ProtectedRoute>
           }
         />

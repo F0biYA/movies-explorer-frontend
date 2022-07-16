@@ -1,19 +1,20 @@
 import React from "react";
 import '../Register/Register.css';
 import Logo from "../Logo/Logo";
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 function Login({ handleLogin }) {
 
-  const { register, formState: { errors, isValid }, handleSubmit} = useForm({ mode: 'onChange', });
+  const { register, formState: { errors, isValid }, handleSubmit } = useForm({ mode: 'onChange', });
 
   function onSubmit(data) {
     console.log(data.email);
     console.log(data.password);
     handleLogin(data.email, data.password)
   }
-  return (
+
+  return (!(localStorage.getItem('login') === 'true') ?
     <section className="register">
       <div className="register__header">
         <Logo></Logo>
@@ -39,8 +40,8 @@ function Login({ handleLogin }) {
                 },
                 pattern: {
                   value:
-                  // eslint-disable-next-line no-useless-escape
-                  /^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,4}$/i,
+                    // eslint-disable-next-line no-useless-escape
+                    /^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,4}$/i,
                   message:
                     "Введите корректный Email",
                 },
@@ -66,13 +67,14 @@ function Login({ handleLogin }) {
         </fieldset>
         <div className="form__submit-container form__wrapper">
           <button className={isValid ? "form__submit-button hover" : "form__submit-button form__submit-button_disabled"}
-        disabled={!isValid}>Войти</button>
-        <span className="form__submit-title">Ещё не зарегистрированы? </span>
-        <Link to='/signup' className="form__submit-link hover">Регистрация</ Link>
-      </div>
-    </form>
+            disabled={!isValid}>Войти</button>
+          <span className="form__submit-title">Ещё не зарегистрированы? </span>
+          <Link to='/signup' className="form__submit-link hover">Регистрация</ Link>
+        </div>
+      </form>
 
     </section >
+    : <Navigate to='/' />
   )
 }
 export default Login;

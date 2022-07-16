@@ -2,7 +2,7 @@
 import React from "react";
 import './Register.css';
 import Logo from "../Logo/Logo";
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 
@@ -15,7 +15,7 @@ function Register({ handleRegister }) {
    handleRegister(data.name, data.email, data.password);
   }
 
-  return (
+  return (!(localStorage.getItem('login') === 'true') ?
     <section className="register">
       <div className="register__header">
         <Logo></Logo>
@@ -99,6 +99,6 @@ function Register({ handleRegister }) {
       </form>
 
     </section>
-  )
+  : <Navigate to='/' />)
 }
 export default Register;

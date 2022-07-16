@@ -1,7 +1,7 @@
 Дипломный проект 35 когорта Александр Путилин
 Часть 4 Функциональность на «React» и JS
 frontend доступен по https://putilin.student.nomoredomains.xyz/
-backend api.putilin.student.nomoreparties.sbs
+backend https://api.putilin.student.nomoreparties.sbs
 ip адресс http://51.250.77.87/
 
 
