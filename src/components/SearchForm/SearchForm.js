@@ -5,7 +5,6 @@ import { useLocation } from 'react-router-dom';
 
 function SearchForm({ filter, handleShortFilms, shortMovies, filterSavedMovies }) {
   //localStorage.removeItem('saved-movies-short')
-  console.log(shortMovies)
   const [searchValue, setSearchValue] = useState("");
   const { register, formState: { errors, isValid }, handleSubmit } = useForm({ mode: 'onChange', });
   const location = useLocation();

@@ -13,6 +13,7 @@ import { api } from '../../utils/MainApi';
 import { CurrentUserContext } from '../../contexts/CurrentUsetContext';
 import ProtectedRoute from '../ProtectedRoute';
 import { moviesApi } from "../../utils/MovieApi";
+import { SHORT_DURATION } from '../../utils/constants';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -37,7 +38,7 @@ function App() {
 
   function searchMovies(movies, value) {
     if ((localStorage.getItem('movies-short') === 'true')) {
-      const tempShortMovies = movies.filter((m) => { return m.duration < 40 })
+      const tempShortMovies = movies.filter((m) => { return m.duration < SHORT_DURATION })
       return tempShortMovies.filter((m) => {
         return m.nameRU.toLowerCase().includes(value.toLowerCase())
       });

@@ -1,3 +1,5 @@
+import { API_URL } from "./constants";
+
 class Api {
   constructor({ address, headers }) {
     this._address = address;
@@ -91,6 +93,7 @@ class Api {
   }
   /*добавление фильма (POST)    */
   postMovie(movie) {
+    console.log(movie)
     return fetch(`${this._address}/movies`, {
       method: 'POST',
       headers: {
@@ -128,7 +131,7 @@ class Api {
 }
 
 export const api = new Api({
-  address: "https://api.putilin.student.nomoreparties.sbs",
+  address: API_URL,
   // headers: {
   //    authorization: `Bearer ${localStorage.getItem('jwt')}`,
   //   "Content-Type": "application/json",

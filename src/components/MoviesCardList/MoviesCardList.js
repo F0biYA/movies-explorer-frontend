@@ -3,17 +3,19 @@ import { useLocation } from 'react-router-dom';
 import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
 import ButtonMoreMovie from "../ButtonMoreMovie/ButtonMoreMovie";
+import { DECK_SIZE, TABLET_SIZE, MOBILE_SIZE} from "../../utils/constants";
+
 
 function MoviesCardList(props) {
   const location = useLocation();
   let saved = false;
 
-  const moviesCount = (window.innerWidth >= 1180 && 12) || (window.innerWidth <= 1180 && window.innerWidth >= 481 && 8) || (window.innerWidth <= 480 && 5);
+  const moviesCount = DECK_SIZE || TABLET_SIZE || MOBILE_SIZE;
   const [countMovies, setCountMovies] = useState(moviesCount);
   const [freeCell, setFreeCell] = useState(0);
   function resizeWindow() {
 
-    const moviesCountResize = (window.innerWidth >= 1181 && 12) || (window.innerWidth <= 1180 && window.innerWidth >= 481 && 8) || (window.innerWidth <= 480 && 5)
+    const moviesCountResize = DECK_SIZE || TABLET_SIZE || MOBILE_SIZE
     setCountMovies(moviesCountResize);
   }
 
@@ -72,9 +74,7 @@ function MoviesCardList(props) {
           deleteMovie={props.deleteMovie}
         />
       )
-
   });
-
 }
 }
 //return (<p className="moviesCardList__message">Ничего не найдено</p>)
