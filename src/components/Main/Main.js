@@ -7,16 +7,19 @@ import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import './Main.css';
 import { Link } from 'react-router-dom';
-function Main() {
+import NavigationBar from '../NavigationBar/NavigationBar';
+
+function Main({loggedIn}) {
 
   return (
     <>
       <Header
-        children={
+        children={ !loggedIn ?
           <>
             <Link to="/signup" className="header__link hover">Регистрация</Link>
             <Link to="/signin" className="header__link header__button-link hover">Войти</Link>
-          </>}
+          </>
+          : <NavigationBar/>}
       />
       <Promo />
       <AboutProject />

@@ -1,3 +1,10 @@
+Дипломный проект 35 когорта Александр Путилин
+Часть 4 Функциональность на «React» и JS
+frontend доступен по https://putilin.student.nomoredomains.xyz/
+backend https://api.putilin.student.nomoreparties.sbs
+ip адресс http://51.250.77.87/
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -76,6 +76,9 @@
   letter-spacing: 0px;
   text-align: center;
 }
+.profile__form__button_disabled {
+  background-color: grey;
+}
 
 .profile__form__button-signOut {
   text-decoration: none;
@@ -85,6 +88,8 @@
   letter-spacing: 0px;
   text-align: center;
   color: #EE3465;
+  border: none;
+  background: none;
 }
 
 @media screen and (max-width:768px) {

@@ -23,7 +23,7 @@
   flex-direction: column;
   gap: 28px;
   margin: 0 auto;
-  padding: 159px 0 743px 0;
+  padding: 159px 0 90px 0;
   position: relative;
   justify-content: center;
   align-items: center;
@@ -66,6 +66,9 @@
 @media screen and (max-width: 580px) {
   .navMenu {
     width: 100%;
+  }
+  .navMenu__container__link:nth-of-type(3) {
+    margin-bottom: 444px;
   }
 
 }

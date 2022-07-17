@@ -5,21 +5,21 @@ import './Movies.css';
 import NavigationBar from "../NavigationBar/NavigationBar";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import ButtonMoreMovie from "../ButtonMoreMovie/ButtonMoreMovie";
-function Movies() {
+import Preloader from "../Preloader/Preloader";
+
+function Movies(props) {
+
   return (
     <section className="movies">
       <Header
         children={
           <NavigationBar />
         } />
-      <SearchForm />
-      <MoviesCardList />
-      {/*<Preloader />*/}
-      <ButtonMoreMovie />
+      <SearchForm handleShortFilms={props.handleShortFilms} shortMovies={props.shortMovies} filter={props.filter}/>
+      {props.isPreloader ? <Preloader /> : ''}
+      <MoviesCardList deleteMovie={props.deleteMovie} saveMovie={props.saveMovie} data={props.movies} savedMovies={props.savedMovies} button={false} />
       <Footer />
     </section>
-
   )
 }
 export default Movies;
